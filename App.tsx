@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import TelaPrincipal from "./src/pages/TelaPrincipal";
+import Camera from "./src/pages/Camera";
+import GPS from "./src/pages/GPS";
+import Acelerometro from "./src/pages/Acelerometro";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="TelaPrincipal">
+        <Stack.Screen name="TelaPrincipal" component={TelaPrincipal} />
+        <Stack.Screen name="Camera" component={Camera} />
+        <Stack.Screen name="GPS" component={GPS} />
+        <Stack.Screen name="Acelerometro" component={Acelerometro} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
